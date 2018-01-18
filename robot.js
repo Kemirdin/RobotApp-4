@@ -94,7 +94,7 @@
     let x = robot.x;
     let y = robot.y;
 
-    switch (robot.dir) {
+    /*switch (robot.dir) {
       case 'up':
         y = y < board.length - 1 ? y + 1 : y;
         break;
@@ -106,7 +106,21 @@
         break;
       case 'right':
         x = x < board[0].length - 1 ? x + 1 : x;
-        break;
+        break;*/
+    let robotDirection = robot.dir;
+    if (y < board.length - 1) {
+      y++;
+    }
+    else if (y > 0) {
+      y--;
+    }
+      else if (x > 0) {
+        x--;
+    }
+    else (x < board[0].length - 1){
+      x++;
+    }
+    
     }
 
     const cell = board[y][x];
@@ -141,7 +155,7 @@
 
     console.log('executing turn()');
 
-    switch (robot.dir) {
+    /*switch (robot.dir) {
       case 'up':
         robot.dir = turnDirection === 'left' ? 'left' : 'right';
         break;
@@ -153,7 +167,21 @@
         break;
       case 'right':
         robot.dir = turnDirection === 'left' ? 'up' : 'down';
-        break;
+        break;*/
+    let robotDirection = robot.dir;
+    if (robotDirection === "left" && robotDirection==="up") {
+      return "left"
+    } if else (robotDirection === "left" && robotDirection === "down"){
+      return "right"
+    } if else (robotDirection === "left"){
+      return "down"
+    }
+    else (robotDirection === "left" && robotDirection === "right"){
+      return "up"
+    }
+      
+    
+    
     }
 
     turns += 1;
