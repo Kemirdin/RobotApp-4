@@ -106,7 +106,7 @@
         break;
       case 'right':
         x = x < board[0].length - 1 ? x + 1 : x;
-        break;*/
+        break; */
     let robotDirection = robot.dir;
     if (y < board.length - 1) {
       y++;
