@@ -110,7 +110,7 @@
     }
 
     const cell = board[y][x];
-
+//i'm so confused about this syntax B.T.W which time && and which time or?
     if (cell === '.' || cell === 'F' || cell === 'A') {
       board[robot.y][robot.x] = trailIndicators[robot.dir];
       robot.x = x;
@@ -133,6 +133,7 @@
   }
 
   function turn(turnDirection) {
+    
     if (turnDirection !== 'left' && turnDirection !== 'right') {
       console.log('ignoring invalid turn', turnDirection);
       return;
