@@ -114,7 +114,7 @@
         }
         break;
       case 'left':
-        //x = x > 0 ? x - 1 : x;
+        x = x > 0 ? x - 1 : x;
         if (x > 0) {
           x = x - 1;
         }
