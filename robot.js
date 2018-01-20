@@ -120,7 +120,7 @@
         }
         break;
       case 'right':
-        //x = x < board[0].length - 1 ? x + 1 : x;
+        x = x < board[0].length - 1 ? x + 1 : x;
         if (x < board[0].length - 1) {
           x = x + 1;
         }
