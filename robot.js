@@ -82,7 +82,13 @@
       table.appendChild(tr);
       let rowHtml = '';
       for (let col = 0; col < cells.length; col++) {
-        const cell = cells[col] === '.' ? '' : cells[col];
+        // const cell = cells[col] === '.' ? '' : cells[col];
+        let cell = '';
+        if (cells[col] === '.') {
+          cell = '';
+        } else {
+          cell = cells[col];
+        }
         rowHtml += `<td>${cell}</td>`;
       }
       tr.innerHTML = rowHtml;
@@ -94,37 +100,35 @@
     let x = robot.x;
     let y = robot.y;
 
-    /*switch (robot.dir) {
+    switch (robot.dir) {
       case 'up':
-        y = y < board.length - 1 ? y + 1 : y;
+        // y = y < board.length - 1 ? y + 1 : y;
+        if (y < board.length - 1) {
+          y = y + 1;
+        }
         break;
       case 'down':
-        y = y > 0 ? y - 1 : y;
+        // y = y > 0 ? y - 1 : y;
+        if (y > 0) {
+          y = y - 1;
+        }
         break;
       case 'left':
-        x = x > 0 ? x - 1 : x;
+        //x = x > 0 ? x - 1 : x;
+        if (x > 0) {
+          x = x - 1;
+        }
         break;
       case 'right':
-        x = x < board[0].length - 1 ? x + 1 : x;
-        break; */
-    let robotDirection = robot.dir;
-    if (y < board.length - 1) {
-      y++;
-    }
-    else if (y > 0) {
-      y--;
-    }
-      else if (x > 0) {
-        x--;
-    }
-    else (x < board[0].length - 1){
-      x++;
-    }
-    
+        //x = x < board[0].length - 1 ? x + 1 : x;
+        if (x < board[0].length - 1) {
+          x = x + 1;
+        }
+        break;
     }
 
     const cell = board[y][x];
-//i'm so confused about this syntax B.T.W which time && and which time or?
+
     if (cell === '.' || cell === 'F' || cell === 'A') {
       board[robot.y][robot.x] = trailIndicators[robot.dir];
       robot.x = x;
@@ -147,7 +151,6 @@
   }
 
   function turn(turnDirection) {
-    
     if (turnDirection !== 'left' && turnDirection !== 'right') {
       console.log('ignoring invalid turn', turnDirection);
       return;
@@ -155,33 +158,39 @@
 
     console.log('executing turn()');
 
-    /*switch (robot.dir) {
+    switch (robot.dir) {
       case 'up':
-        robot.dir = turnDirection === 'left' ? 'left' : 'right';
+        //robot.dir = turnDirection === 'left' ? 'left' : 'right';
+        if (turnDirection === 'left') {
+          robot.dir = 'left';
+        } else {
+          robot.dir = 'right';
+        }
         break;
       case 'down':
-        robot.dir = turnDirection === 'left' ? 'right' : 'left';
+        //(robot.dir = turnDirection === 'left' ? 'right' : 'left';
+        if (turnDirection === 'left') {
+          robot.dir = 'right';
+        } else {
+          robot.dir = 'left';
+        }
         break;
       case 'left':
-        robot.dir = turnDirection === 'left' ? 'down' : 'up';
+        //robot.dir = turnDirection === 'left' ? 'down' : 'up';
+        if (turnDirection === 'left') {
+          robot.dir = 'down';
+        } else {
+          robot.dir = 'up';
+        }
         break;
       case 'right':
-        robot.dir = turnDirection === 'left' ? 'up' : 'down';
-        break;*/
-    let robotDirection = robot.dir;
-    if (robotDirection === "left" && robotDirection==="up") {
-      return "left"
-    } if else (robotDirection === "left" && robotDirection === "down"){
-      return "right"
-    } if else (robotDirection === "left"){
-      return "down"
-    }
-    else (robotDirection === "left" && robotDirection === "right"){
-      return "up"
-    }
-      
-    
-    
+        //robot.dir = turnDirection === 'left' ? 'up' : 'down';
+        if (turnDirection === 'left') {
+          robot.dir = 'up';
+        } else {
+          robot.dir = 'down';
+        }
+        break;
     }
 
     turns += 1;
